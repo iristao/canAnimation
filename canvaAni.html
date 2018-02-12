@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
+
+<canvas id="myCanvas" width="400" height="400" style="border:1px solid #234322;" >
+</canvas>
+
+<button type="button" >Stop</button>
+<button type="button">Clear</button>
+<button type="Toggle" >Stop</button>
+
+
+<script>
+	
+	var stopButton = document.getElementsByTagName('button')[0];	
+
+	var canvas = document.getElementById("myCanvas"); 
+	
+
+function animation(){
+	
+
+
+	var r = 1;
+	var posneg = 1;
+	var c = canvas.getContext('2d');
+
+	function drawCircle(){
+		c.fillStyle = "purple";
+		c.beginPath();
+		c.arc(500,500,r, 0, 2*Math.PI, false);
+		c.fill();
+		
+
+		r += posneg * 0.5;
+
+		requestAnimationFrame(drawCircle);
+		
+		if (r == 400 && r == 0){
+			posneg = -posneg;
+			requestAnimationFrame(drawCircle);
+		}
+		
+		}
+	c.addEventListener('click',animation);
+	c.addEventListener('click',console.log('hey'));
+
+	
+	drawCircle();
+}
+
+animation();
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
